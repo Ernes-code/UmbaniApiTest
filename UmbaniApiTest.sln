@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29926.136
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UmbaniApiTest", "UmbaniApiTest.csproj", "{00AB5276-57F3-459D-83B6-B85DE4E34770}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{00AB5276-57F3-459D-83B6-B85DE4E34770}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{00AB5276-57F3-459D-83B6-B85DE4E34770}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{00AB5276-57F3-459D-83B6-B85DE4E34770}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{00AB5276-57F3-459D-83B6-B85DE4E34770}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {FCAC4A9F-B350-40FC-AE3D-07FA4CE573D0}
+	EndGlobalSection
+EndGlobal
