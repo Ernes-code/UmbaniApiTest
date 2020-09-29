@@ -13,8 +13,13 @@ namespace UmbaniApiTest.Entities
 
         }
 
+        public ApplicationDbContext()
+        {
+
+        }
+
         public DbSet<Person> Person { get; set; }
 
-        public Measurement Measurement { get; set; }
+        public DbSet<Measurement> Measurement { get; set; }
     }
 }

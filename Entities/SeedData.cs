@@ -21,9 +21,9 @@ namespace UmbaniApiTest.Entities
                     );
                 dbContext.AddRange
                     (
-                    new Measurement { MeasurementId = Guid.NewGuid(), Temperature = 22, Humidity = 50, Weight = 67, Depth = 33, Lenght = 33, Width = 33, UserId = User1, Catagory = Global.Catagory.Line1, Pass = true },
-                    new Measurement { MeasurementId = Guid.NewGuid(), Temperature = 34, Humidity = 100, Weight = 38, Depth = 58, Lenght = 98, Width = 34, UserId = User2, Catagory = Global.Catagory.Line2, Pass = true },
-                    new Measurement { MeasurementId = Guid.NewGuid(), Temperature = 56, Humidity = 44, Weight = 90, Depth = 67, Lenght = 09, Width = 67, UserId = User1, Catagory = Global.Catagory.Line3, Pass = true }
+                    new Measurement { MeasurementId = Guid.NewGuid(), Temperature = 22, Humidity = 50, Weight = 67, Depth = 33, Lenght = 33, Width = 33, PersonId = User1, Catagory = Global.Catagory.Line1, Pass = true },
+                    new Measurement { MeasurementId = Guid.NewGuid(), Temperature = 34, Humidity = 100, Weight = 38, Depth = 58, Lenght = 98, Width = 34, PersonId = User2, Catagory = Global.Catagory.Line2, Pass = true },
+                    new Measurement { MeasurementId = Guid.NewGuid(), Temperature = 56, Humidity = 44, Weight = 90, Depth = 67, Lenght = 09, Width = 67, PersonId = User1, Catagory = Global.Catagory.Line3, Pass = true }
                     );
                 _ = dbContext.SaveChanges();
                 dbContext.Dispose();

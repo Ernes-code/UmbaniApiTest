@@ -10,6 +10,6 @@ namespace UmbaniApiTest.Entities
         public Guid PersonId { get; set; }
         public string PersonUsername { get; set; }
 
-        public IEnumerable<Measurement> Measurements { get; set; }
+        public IEnumerable<Measurement> Measurement { get; set; }
     }
 }
