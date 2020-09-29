@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using UmbaniApiTest.Entities;
 using UmbaniApiTest.Models;
 using UmbaniApiTest.Services;
 using UmbaniApiTest.ViewModels;
@@ -16,18 +17,21 @@ namespace UmbaniApiTest.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-        private IGetMeasurementData _getMeasurement;
+        private readonly IGetMeasurementData _getMeasurement;
+        private readonly ApplicationDbContext _dbContext;
 
-        public HomeController(ILogger<HomeController> logger, IGetMeasurementData getMeasurement)
+        public HomeController(ILogger<HomeController> logger, IGetMeasurementData getMeasurement, ApplicationDbContext dbContext)
         {
-            _logger = logger;
-            _getMeasurement = getMeasurement;
+            this._logger = logger;
+            this._getMeasurement = getMeasurement;
+            this._dbContext = dbContext;
         }
 
         public IActionResult Index()
         {
-            List<Item> model = new List<Item> { new Measurement { Temperature = 23.4 , Humidity = 50 , Weight = 10 , Depth = 20, Width = 20 , Lenght= 20 }, 
-               new Measurement { Temperature = 59 , Humidity = 20 , Weight = 60 , Depth = 45, Width = 10 , Lenght= 9 } };
+            SeedData.Seed(this._dbContext);
+            List<Item> model = new List<Item> { new Models.Measurement { Temperature = 23.4 , Humidity = 50 , Weight = 10 , Depth = 20, Width = 20 , Lenght= 20 }, 
+               new Models.Measurement { Temperature = 59 , Humidity = 20 , Weight = 60 , Depth = 45, Width = 10 , Lenght= 9 } };
 
             IndexMeasurementViewModel viewModel = new IndexMeasurementViewModel
             {

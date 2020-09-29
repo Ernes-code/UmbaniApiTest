@@ -20,9 +20,20 @@ namespace UmbaniApiTest
 {
     public class Startup
     {
-        public Startup(IConfiguration configuration) => this.Configuration = configuration;
+        public Startup(IHostingEnvironment env) 
+        {
+            var builder = new ConfigurationBuilder()
+                .SetBasePath(env.ContentRootPath)
+                .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
+                .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true)
+                .AddEnvironmentVariables();
+
+            this.Configuration = builder.Build(); 
+        }
 
         public IConfiguration Configuration { get; }
+
+        private readonly ApplicationDbContext _dbContext;
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
@@ -56,7 +67,9 @@ namespace UmbaniApiTest
               })
             .SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
-             _ = services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(this.Configuration["ConnectionStrings: DefaultConnection"]));
+
+            string connectionString = Configuration["Data:ConnectionStrings:DefaultConnection"];
+            _ = services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(connectionString));
 
             _ = services.AddScoped<IGetMeasurementData, GetMeasurementData>();
         }
@@ -82,7 +95,7 @@ namespace UmbaniApiTest
 
             _ = app.UseMvc(routes =>
               {
-                  routes.MapRoute(
+                  _ = routes.MapRoute(
                       name: "default",
                       template: "{controller=Home}/{action=Index}/{id?}");
               });

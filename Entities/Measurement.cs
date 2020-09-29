@@ -16,8 +16,9 @@ namespace UmbaniApiTest.Entities
         public double Lenght { get; set; }
         public double Width { get; set; }
         public Catagory Catagory { get; set; }
+        public DateTime DateTime => DateTime.Now;
         public bool Pass { get; set; }
         public Guid UserId { get; set; }
-        public User User { get; set; }
+        public Person User { get; set; }
     }
 }

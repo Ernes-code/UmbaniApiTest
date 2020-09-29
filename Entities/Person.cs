@@ -5,10 +5,10 @@ using System.Threading.Tasks;
 
 namespace UmbaniApiTest.Entities
 {
-    public class User
+    public class Person
     {
-        public Guid UserId { get; set; }
-        public double Username { get; set; }
+        public Guid PersonId { get; set; }
+        public string PersonUsername { get; set; }
 
         public IEnumerable<Measurement> Measurements { get; set; }
     }
