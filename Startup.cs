@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Authorization;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using System.Security.Claims;
@@ -59,6 +60,8 @@ namespace UmbaniApiTest
                 options.EnableEndpointRouting = false;
             })
             .SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+
+            // _ = services.AddDbContext<>(options => options.UseSqlServer(this.Configuration["ConnectionStrings: DefaultConnection"]));
 
             services.AddScoped<IGetMeasurementData, GetMeasurementData>();
         }
