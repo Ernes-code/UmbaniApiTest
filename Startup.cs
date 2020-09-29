@@ -12,6 +12,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using System.Security.Claims;
+using UmbaniApiTest.Entities;
 using UmbaniApiTest.Implementation;
 using UmbaniApiTest.Services;
 
@@ -19,51 +20,45 @@ namespace UmbaniApiTest
 {
     public class Startup
     {
-        public Startup(IConfiguration configuration)
-        {
-            Configuration = configuration;
-        }
+        public Startup(IConfiguration configuration) => this.Configuration = configuration;
 
         public IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.Configure<CookiePolicyOptions>(options =>
-            {
+            _ = services.Configure<CookiePolicyOptions>(options =>
+              {
                 // This lambda determines whether user consent for non-essential cookies is needed for a given request.
                 options.CheckConsentNeeded = context => true;
-                options.MinimumSameSitePolicy = SameSiteMode.None;
-            });
+                  options.MinimumSameSitePolicy = SameSiteMode.None;
+              });
 
-            services.AddAuthentication(AzureADDefaults.AuthenticationScheme)
-                .AddAzureAD(options => Configuration.Bind("AzureAd", options));
+            _ = services.AddAuthentication(AzureADDefaults.AuthenticationScheme)
+                .AddAzureAD(options => this.Configuration.Bind("AzureAd", options));
 
-            services.Configure<OpenIdConnectOptions>(AzureADDefaults.OpenIdScheme, options =>
-            {
-                options.Authority = options.Authority + "/v2.0/";
+            _ = services.Configure<OpenIdConnectOptions>(AzureADDefaults.OpenIdScheme, options =>
+              {
+                  options.Authority = options.Authority + "/v2.0/";
 
-                options.TokenValidationParameters.ValidateIssuer = false;
-            });
+                  options.TokenValidationParameters.ValidateIssuer = false;
+              });
 
-            services.AddAuthorization(options =>
-            {
-                options.AddPolicy("DivisionManager", policyBuilder => policyBuilder.RequireClaim("groups", "034fc3da-3a24-48e1-ab75-fd76466a5c7d"));
-            });
+            _ = services.AddAuthorization(options => options.AddPolicy("DivisionManager", policyBuilder => policyBuilder.RequireClaim("groups", "034fc3da-3a24-48e1-ab75-fd76466a5c7d")));
 
-            services.AddMvc(options =>
-            {
-                var policy = new AuthorizationPolicyBuilder()
-                    .RequireAuthenticatedUser()
-                    .Build();
-                options.Filters.Add(new AuthorizeFilter(policy));
-                options.EnableEndpointRouting = false;
-            })
+            _ = services.AddMvc(options =>
+              {
+                  var policy = new AuthorizationPolicyBuilder()
+                      .RequireAuthenticatedUser()
+                      .Build();
+                  options.Filters.Add(new AuthorizeFilter(policy));
+                  options.EnableEndpointRouting = false;
+              })
             .SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
-            // _ = services.AddDbContext<>(options => options.UseSqlServer(this.Configuration["ConnectionStrings: DefaultConnection"]));
+             _ = services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(this.Configuration["ConnectionStrings: DefaultConnection"]));
 
-            services.AddScoped<IGetMeasurementData, GetMeasurementData>();
+            _ = services.AddScoped<IGetMeasurementData, GetMeasurementData>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -71,26 +66,26 @@ namespace UmbaniApiTest
         {
             if (env.IsDevelopment())
             {
-                app.UseDeveloperExceptionPage();
+                _ = app.UseDeveloperExceptionPage();
             }
             else
             {
-                app.UseExceptionHandler("/Home/Error");
-                app.UseHsts();
+                _ = app.UseExceptionHandler("/Home/Error");
+                _ = app.UseHsts();
             }
 
-            app.UseHttpsRedirection();
-            app.UseStaticFiles();
-            app.UseCookiePolicy();
+            _ = app.UseHttpsRedirection();
+            _ = app.UseStaticFiles();
+            _ = app.UseCookiePolicy();
 
-            app.UseAuthentication();
+            _ = app.UseAuthentication();
 
-            app.UseMvc(routes =>
-            {
-                routes.MapRoute(
-                    name: "default",
-                    template: "{controller=Home}/{action=Index}/{id?}");
-            });
+            _ = app.UseMvc(routes =>
+              {
+                  routes.MapRoute(
+                      name: "default",
+                      template: "{controller=Home}/{action=Index}/{id?}");
+              });
         }
     }
 }

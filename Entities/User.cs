@@ -9,5 +9,7 @@ namespace UmbaniApiTest.Entities
     {
         public Guid UserId { get; set; }
         public double Username { get; set; }
+
+        public IEnumerable<Measurement> Measurements { get; set; }
     }
 }
