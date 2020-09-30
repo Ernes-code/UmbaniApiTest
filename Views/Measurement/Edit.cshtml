@@ -1,11 +1,11 @@
-﻿@model UmbaniApiTest.ViewModels.AddMeasurmentViewModel
+﻿@model UmbaniApiTest.ViewModels.EditMeasurmentViewModel
 
 @{
-    ViewData["Title"] = "Add Measurement";
+    ViewData["Title"] = "Edit Measurement";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h4>Add Measurement</h4>
+<h4>Edit Measurement</h4>
 <hr />
 <section class="row">
     <section class="col-md-4">
@@ -13,48 +13,45 @@
             <section asp-validation-summary="ModelOnly" class="text-danger"></section>
             <section class="form-group">
                 <label class="control-label col-sm-2" for="temperature">Temperature:</label>
-                <input type="number" class="form-control" asp-for="Temperature" id="temperature" placeholder="Enter Temperature" name="temperature">
+                <input type="number" class="form-control" asp-for="Temperature" id="temperature" placeholder="Enter Temperature" value="" name="temperature">
             </section>
             <section class="form-group">
                 <label class="control-label col-sm-2" for="humidity">Humidity:</label>
-                <input type="number" class="form-control" asp-for="Humidity" id="humidity" placeholder="Enter Humidity" name="humidity">
+                <input type="number" class="form-control" asp-for="Humidity" id="humidity" placeholder="Enter Humidity" value="" name="humidity">
             </section>
             <section class="form-group">
                 <label class="control-label col-sm-2" for="humidity">Weight:</label>
-                <input type="number" class="form-control" asp-for="Weight" id="weight" placeholder="Enter Weight" name="weight">
+                <input type="number" class="form-control" asp-for="Weight" id="weight" placeholder="Enter Weight" value="" name="weight">
             </section>
             <section class="form-group">
                 <label class="control-label col-sm-2" for="depth">Depth:</label>
-                <input type="number" class="form-control" asp-for="Depth" id="depth" placeholder="Enter Depth" name="depth">
+                <input type="number" class="form-control" asp-for="Depth" id="depth" placeholder="Enter Depth" value="" name="depth">
             </section>
             <section class="form-group">
-                <label class="control-label col-sm-2" for="width">Width:</label>
-                <input type="number" class="form-control" asp-for="Width" id="width" placeholder="Enter Width" name="Width">
+                <label class="control-label col-sm-2" for="height">Height:</label>
+                <input type="number" class="form-control" asp-for="Width" id="height" placeholder="Enter Height" value="" name="height">
             </section>
             <section class="form-group">
                 <label class="control-label col-sm-2" for="lenght">Lenght:</label>
-                <input type="number" class="form-control" asp-for="Lenght" id="lenght" placeholder="Enter Lenght" name="lenght">
+                <input type="number" class="form-control" asp-for="Lenght" id="lenght" placeholder="Enter Lenght" value="" name="lenght">
             </section>
             <section class="form-group">
                 <label class="control-label col-sm-2" for="catagory">Catagory:</label>
                 <select class="form-control" asp-for="ItemCatagory" id="catagory">
-                    <option>Line 1</option>
-                    <option>Line 2</option>
-                    <option>Line 3</option>
+                    <option value="1">Line 1</option>
+                    <option value="2">Line 2</option>
+                    <option value="3">Line 3</option>
                 </select>
             </section>
             <section class="form-group">
                 <section class="col-sm-offset-2 col-sm-10">
                     <section class="checkbox">
-                        <label><input asp-for="Pass" type="checkbox" name="pass"> Pass</label>
+                        <label><input type="checkbox" name="pass" value=""> Pass</label>
                     </section>
                 </section>
             </section>
-            <section asp-validation-summary="All" class="alert-warning">
-
-            </section>
             <section class="form-group">
-                <input asp-action="AddMeasurement" asp-controller="Measurement" type="submit" value="Add" class="btn btn-primary" />
+                <input type="submit" value="Edit" class="btn btn-primary" />
             </section>
         </form>
     </section>
