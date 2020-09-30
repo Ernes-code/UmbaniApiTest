@@ -69,7 +69,7 @@ namespace UmbaniApiTest.Controllers
                         Catagory = measurement.MeasurmentCatagory,
                         Pass = measurement.Pass,
                         PersonId = personId.Select(x => x.PersonId).FirstOrDefault()
-                    }); ;
+                    });
                     _ = this._dbContext.SaveChanges();
                 }
                 }
@@ -83,7 +83,10 @@ namespace UmbaniApiTest.Controllers
 
         public IActionResult EditMeasurment(EditMeasurmentViewModel model)
         {
-                Models.Measurement measurement = new Models.Measurement
+            var identity = User.Identity as ClaimsIdentity;
+            var user = identity.Claims.FirstOrDefault(c => c.Type == "preferred_username")?.Value;
+
+            Models.Measurement measurement = new Models.Measurement
                 {
                     Temperature = model.Temperature,
                     Humidity = model.Depth,
@@ -98,11 +101,28 @@ namespace UmbaniApiTest.Controllers
                 try
                 {
                     using(this._dbContext)
+                    {
                     //_ = this._dbContext.Measurement.FromSqlRaw("UpdateMeasurement @p0 @p1 @p2 @p3 @p4 @p5 @p5 @p6 @p7"
                     //        , model.MeasurementId, measurement.Temperature, measurement.Humidity, measurement.Weight
                     //        , measurement.Depth, measurement.Width, measurement.Lenght, (int) measurement.MeasurmentCatagory, measurement.Pass).ToList();
-
+                     var personId = this._dbContext.Person.Select(x => new Person { PersonId = x.PersonId, PersonUsername = x.PersonUsername }).Where(x => x.PersonUsername.CompareTo(user) == 0);
+                    _ = this._dbContext.Measurement.Update(new Entities.Measurement
+                    {
+                        MeasurementId = model.MeasurementId,
+                        Temperature = measurement.Temperature,
+                        Humidity = measurement.Humidity,
+                        Weight = measurement.Weight,
+                        Depth = measurement.Depth,
+                        Width = measurement.Width,
+                        Lenght = measurement.Lenght,
+                        Catagory = measurement.MeasurmentCatagory,
+                        Pass = measurement.Pass,
+                        PersonId = personId.Select(x => x.PersonId).FirstOrDefault()
+                    });
+                    _ = this._dbContext.SaveChanges();
                 }
+
+            }
                 catch (Exception e)
                 {
                     return this.View(new ErrorViewModel { RequestId = e.Message ?? this.HttpContext.TraceIdentifier });
@@ -113,11 +133,17 @@ namespace UmbaniApiTest.Controllers
 
         public IActionResult DeleteMeasurment(DeleteMeasurementViewModel model)
         {
-                try
+            var identity = User.Identity as ClaimsIdentity;
+            var user = identity.Claims.FirstOrDefault(c => c.Type == "preferred_username")?.Value;
+            try
                 {
                     using (this._dbContext)
-                        _ = this._dbContext.Measurement.FromSqlRaw("DeleteMeasurement @p0 @p1"
-                            , model.MeasurementId, model.PersonId).ToList();
+                    {
+                    this._dbContext.Measurement.Remove(new Entities.Measurement { MeasurementId = model.MeasurementId, PersonId = model.PersonId });
+                    _ = this._dbContext.SaveChanges();
+                    }
+                    //    _ = this._dbContext.Measurement.FromSqlRaw("DeleteMeasurement @p0 @p1"
+                    //        , model.MeasurementId, model.PersonId).ToList();
                 }
                 catch (Exception e)
                 {
