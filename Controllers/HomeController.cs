@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.CodeAnalysis.Options;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using Microsoft.Extensions.Logging;
 using UmbaniApiTest.Entities;
 using UmbaniApiTest.Models;
@@ -27,8 +30,26 @@ namespace UmbaniApiTest.Controllers
         }
         public IActionResult GridView()
         {
-            List<Item> model = new List<Item> { new Models.Measurement { Temperature = 23.4 , Humidity = 50 , Weight = 10 , Depth = 20, Width = 20 , Lenght= 20 },
-               new Models.Measurement { Temperature = 59 , Humidity = 20 , Weight = 60 , Depth = 45, Width = 10 , Lenght= 9 } };
+            var model = this._dbContext.Measurement.Select(x => new Models.Measurement {Temperature = x.Temperature, Humidity = x.Humidity, 
+                Weight = x.Weight, Depth = x.Depth, Width = x.Width, Lenght = x.Lenght, MeasurmentCatagory = x.Catagory, Pass = x.Pass
+            });
+
+            Models.Measurement calc = new Models.Measurement();
+
+            double TemperatureSum = calc.CalculateSum(model.Select(x => x.Temperature).ToList());
+            double TemperatureAverage = calc.CalculateMean(model.Select(x => x.Temperature).ToList());
+            double TemperatureMin = calc.CalculateMin(model.Select(x => x.Temperature).ToList());
+            double TemperatureMax = calc.CalculateMax(model.Select(x => x.Temperature).ToList());
+            double TemperatureStdv = calc.CalculateStdv(model.Select(x => x.Temperature).ToList());
+            double TemperatureVariance = calc.CalculateVar(model.Select(x => x.Temperature).ToList());
+
+            ViewBag.TemperatureSum = TemperatureSum;
+            ViewBag.TemperatureAverage = TemperatureAverage;
+            ViewBag.TemperatureMin = TemperatureMin;
+            ViewBag.TemperatureMax = TemperatureMax;
+            ViewBag.TemperatureStdv = TemperatureStdv;
+            ViewBag.TemperatureVariance = TemperatureVariance;
+
 
             IndexMeasurementViewModel viewModel = new IndexMeasurementViewModel
             {
