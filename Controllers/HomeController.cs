@@ -18,18 +18,14 @@ namespace UmbaniApiTest.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-        private readonly IGetMeasurementData _getMeasurement;
         private readonly ApplicationDbContext _dbContext;
 
-        public HomeController(ILogger<HomeController> logger, IGetMeasurementData getMeasurement, ApplicationDbContext dbContext)
+        public HomeController(ILogger<HomeController> logger, ApplicationDbContext dbContext)
         {
             this._logger = logger;
-            this._getMeasurement = getMeasurement;
             this._dbContext = dbContext;
         }
-
-        [HttpGet]
-        public async Task<IActionResult> GridView()
+        public IActionResult GridView()
         {
             List<Item> model = new List<Item> { new Models.Measurement { Temperature = 23.4 , Humidity = 50 , Weight = 10 , Depth = 20, Width = 20 , Lenght= 20 },
                new Models.Measurement { Temperature = 59 , Humidity = 20 , Weight = 60 , Depth = 45, Width = 10 , Lenght= 9 } };

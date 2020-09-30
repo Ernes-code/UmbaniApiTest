@@ -9,9 +9,9 @@ namespace UmbaniApiTest
     {
         public enum Catagory
         {
-            Line1,
-            Line2,
-            Line3
+            Line1 = 1,
+            Line2 = 2,
+            Line3 = 3
         }
     }
 }
