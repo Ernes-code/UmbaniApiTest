@@ -3,17 +3,11 @@
 }
 @model UmbaniApiTest.ViewModels.IndexMeasurementViewModel
 
-    <div class="text-center">
+    <h1>Welcome to Enter/View your Measurments for randomness!!</h1>
 
-        <form asp-action="AddMeasurement" asp-controller="Home" method="post" role="form">
-            <ul>
-                @foreach (var measurement in Model.Items)
-                {
-                    <li>Temperature  @measurement.Temperature   Humidity @measurement.Humidity  Weight  @measurement.Weight  Lenght  @measurement.Lenght  Width  @measurement.Width  Depth  @measurement.Depth</li>
-                }
-            </ul>
-            <button>
-                Add Measurement
-            </button>
-         </form>
+    <div class="text-center">
+        <form  method="post" role="form">
+            <button type="submit" asp-action="GridView" asp-controller="Home" class="d-inline-block">View Measurments</button>
+            <button type="submit" asp-action="AddMeasurement" asp-controller="Home">Add Measurment</button>
+        </form>
     </div>

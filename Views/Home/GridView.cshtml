@@ -1,0 +1,21 @@
+﻿
+@{
+    ViewData["Title"] = "GridView";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Measurments</h1>
+
+<div class="text-center">
+    <form asp-action="AddMeasurement" asp-controller="Home" method="post" role="form">
+        <ul>
+            @foreach (var measurement in Model.Items)
+            {
+                <li>Temperature  @measurement.Temperature   Humidity @measurement.Humidity  Weight  @measurement.Weight  Lenght  @measurement.Lenght  Width  @measurement.Width  Depth  @measurement.Depth</li>
+            }
+        </ul>
+        <button>
+            Add Measurement
+        </button>
+    </form>
+</div>

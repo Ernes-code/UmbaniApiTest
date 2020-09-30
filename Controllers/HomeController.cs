@@ -27,10 +27,9 @@ namespace UmbaniApiTest.Controllers
             this._dbContext = dbContext;
         }
 
-        public IActionResult Index()
+        public IActionResult GridView()
         {
-            SeedData.Seed(this._dbContext);
-            List<Item> model = new List<Item> { new Models.Measurement { Temperature = 23.4 , Humidity = 50 , Weight = 10 , Depth = 20, Width = 20 , Lenght= 20 }, 
+            List<Item> model = new List<Item> { new Models.Measurement { Temperature = 23.4 , Humidity = 50 , Weight = 10 , Depth = 20, Width = 20 , Lenght= 20 },
                new Models.Measurement { Temperature = 59 , Humidity = 20 , Weight = 60 , Depth = 45, Width = 10 , Lenght= 9 } };
 
             IndexMeasurementViewModel viewModel = new IndexMeasurementViewModel
@@ -41,14 +40,15 @@ namespace UmbaniApiTest.Controllers
             return this.View(viewModel);
         }
 
+        public IActionResult Index()
+        {
+            SeedData.Seed(this._dbContext);
+            return this.View();
+        }
+
         public IActionResult AddMeasurement()
         {
             return RedirectToAction("Index", "Measurement");
-        }
-
-        public IActionResult Privacy()
-        {
-            return this.View();
         }
 
         [AllowAnonymous]
