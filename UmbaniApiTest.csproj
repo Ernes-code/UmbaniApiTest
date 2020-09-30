@@ -9,6 +9,8 @@
   <ItemGroup>
     <Compile Remove="Migrations\20200929195200_UmbaniDBInitialMigration.cs" />
     <Compile Remove="Migrations\20200929195200_UmbaniDBInitialMigration.Designer.cs" />
+    <Compile Remove="Migrations\20200930092626_AddMeasurementStoredProc.cs" />
+    <Compile Remove="Migrations\20200930092626_AddMeasurementStoredProc.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>
