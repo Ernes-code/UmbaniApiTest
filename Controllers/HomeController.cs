@@ -31,7 +31,7 @@ namespace UmbaniApiTest.Controllers
         public IActionResult GridView()
         {
             var model = this._dbContext.Measurement.Select(x => new Models.Measurement {Temperature = x.Temperature, Humidity = x.Humidity, 
-                Weight = x.Weight, Depth = x.Depth, Width = x.Width, Lenght = x.Lenght, MeasurmentCatagory = x.Catagory, Pass = x.Pass
+                Weight = x.Weight, Depth = x.Depth, Width = x.Width, Lenght = x.Lenght, MeasurmentCatagory = x.Catagory, Pass = x.Pass, MeasurementId = x.MeasurementId
             });
 
             Models.Measurement calc = new Models.Measurement();
@@ -67,7 +67,6 @@ namespace UmbaniApiTest.Controllers
         }
 
         [HttpPost]
-        [ValidateAntiForgeryToken]
         public async Task<IActionResult> AddMeasurement()
         {
             return RedirectToAction("Index", "Measurement");

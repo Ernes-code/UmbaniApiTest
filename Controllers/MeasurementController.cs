@@ -27,6 +27,7 @@ namespace UmbaniApiTest.Controllers
             return View();
         }
 
+        [HttpPost]
         public IActionResult AddMeasurement(AddMeasurmentViewModel model)
         {
 
@@ -81,6 +82,7 @@ namespace UmbaniApiTest.Controllers
                 return this.RedirectToAction("GridView", "Home");
         }
 
+        [HttpPost]
         public IActionResult EditMeasurment(EditMeasurmentViewModel model)
         {
             var identity = User.Identity as ClaimsIdentity;
@@ -131,6 +133,7 @@ namespace UmbaniApiTest.Controllers
                 return this.RedirectToAction("GridView", "Home");
         }
 
+        [HttpPost]
         public IActionResult DeleteMeasurment(DeleteMeasurementViewModel model)
         {
             var identity = User.Identity as ClaimsIdentity;

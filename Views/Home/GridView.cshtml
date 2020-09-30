@@ -5,7 +5,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Measurments</h1>
+<h1>Measurements</h1>
 
 <section class="text-center">
     <div style="padding:20px">
@@ -22,14 +22,14 @@
         <h5>Temperature StandardDeviation: </h5>
         @ViewBag.TemperatureStdv
     </div>
-    <form asp-action="AddMeasurement" asp-controller="Home" method="post" role="form">
+    <form method="post" role="form">
         <ul>
             @foreach (var measurement in Model.Items)
             {
-                <li style="list-style-type: none"><section style="display:inline-block; padding: 10px"> <section>Temperature @measurement.Temperature</section>   <section>Humidity @measurement.Humidity</section>  <section>Weight  @measurement.Weight</section>  <section>Lenght  @measurement.Lenght</section> <section>Width  @measurement.Width</section>  <section>Depth  @measurement.Depth</section></section><button>Update</button><button>Delete</button></li>
+                <li style="list-style-type: none" id="@measurement.MeasurementId"><section style="display:inline-block; padding: 10px"> <section>Temperature @measurement.Temperature</section>   <section>Humidity @measurement.Humidity</section>  <section>Weight  @measurement.Weight</section>  <section>Lenght  @measurement.Lenght</section> <section>Width  @measurement.Width</section>  <section>Depth  @measurement.Depth</section></section><button asp-action="AddMeasurement" asp-controller="Home">Update</button><button asp-action="AddMeasurement" asp-controller="Home">Delete</button></li>
             }
         </ul>
-        <button>
+        <button asp-action="AddMeasurement" asp-controller="Home">
             Add Measurement
         </button>
     </form>

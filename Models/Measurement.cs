@@ -8,6 +8,7 @@ namespace UmbaniApiTest.Models
 {
     public class Measurement: Item
     {
+        public Guid MeasurementId { get; set; }
         public Catagory MeasurmentCatagory { get; set; }
 
         public bool Pass { get; set; }

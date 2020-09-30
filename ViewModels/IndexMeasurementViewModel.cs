@@ -8,6 +8,6 @@ namespace UmbaniApiTest.ViewModels
 {
     public class IndexMeasurementViewModel
     {
-        public IEnumerable<Item> Items { get; set; }
+        public IEnumerable<Measurement> Items { get; set; }
     }
 }
