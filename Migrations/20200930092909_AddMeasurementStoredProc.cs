@@ -19,8 +19,8 @@ namespace UmbaniApiTest.Migrations
                 AS
                 BEGIN
                     SET NOCOUNT ON;
-                    INSERT INTO [Measurement] ([MeasurementId], [Temperature], [Humidity], [Weight], [Depth], [Width], [Lenght], [Catagory], [Pass], [PersonId], [DateTime])
-                    VALUES(NEWID(), @Temperature, @Humidity, @Weight, @Depth, @Width, @Lenght, @Catagory, @Pass, @PersonId, GETDATE());
+                    INSERT INTO [Measurement] ([MeasurementId], [Temperature], [Humidity], [Weight], [Depth], [Width], [Lenght], [Catagory], [Pass], [PersonId])
+                    VALUES(NEWID(), @Temperature, @Humidity, @Weight, @Depth, @Width, @Lenght, @Catagory, @Pass, @PersonId);
                 END";
 
             _ = migrationBuilder.Sql(sp);

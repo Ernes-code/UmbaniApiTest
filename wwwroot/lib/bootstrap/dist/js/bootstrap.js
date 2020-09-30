@@ -2366,7 +2366,7 @@
       var animate = $(this._element).hasClass(ClassName$5.FADE) ? ClassName$5.FADE : '';
 
       if (this._isShown && this._config.backdrop) {
-        this._backdrop = document.createElement('div');
+        this._backdrop = document.createElement('section');
         this._backdrop.className = ClassName$5.BACKDROP;
 
         if (animate) {
@@ -2512,11 +2512,11 @@
 
     _proto._getScrollbarWidth = function _getScrollbarWidth() {
       // thx d.walsh
-      var scrollDiv = document.createElement('div');
-      scrollDiv.className = ClassName$5.SCROLLBAR_MEASURER;
-      document.body.appendChild(scrollDiv);
-      var scrollbarWidth = scrollDiv.getBoundingClientRect().width - scrollDiv.clientWidth;
-      document.body.removeChild(scrollDiv);
+      var scrollsection = document.createElement('section');
+      scrollsection.className = ClassName$5.SCROLLBAR_MEASURER;
+      document.body.appendChild(scrollsection);
+      var scrollbarWidth = scrollsection.getBoundingClientRect().width - scrollsection.clientWidth;
+      document.body.removeChild(scrollsection);
       return scrollbarWidth;
     } // Static
     ;
@@ -2627,7 +2627,7 @@
     br: [],
     col: [],
     code: [],
-    div: [],
+    section: [],
     em: [],
     hr: [],
     h1: [],
@@ -2771,7 +2771,7 @@
   };
   var Default$4 = {
     animation: true,
-    template: '<div class="tooltip" role="tooltip">' + '<div class="arrow"></div>' + '<div class="tooltip-inner"></div></div>',
+    template: '<section class="tooltip" role="tooltip">' + '<section class="arrow"></section>' + '<section class="tooltip-inner"></section></section>',
     trigger: 'hover focus',
     title: '',
     delay: 0,
@@ -3466,7 +3466,7 @@
     placement: 'right',
     trigger: 'click',
     content: '',
-    template: '<div class="popover" role="tooltip">' + '<div class="arrow"></div>' + '<h3 class="popover-header"></h3>' + '<div class="popover-body"></div></div>'
+    template: '<section class="popover" role="tooltip">' + '<section class="arrow"></section>' + '<h3 class="popover-header"></h3>' + '<section class="popover-body"></section></section>'
   });
 
   var DefaultType$5 = _objectSpread({}, Tooltip.DefaultType, {

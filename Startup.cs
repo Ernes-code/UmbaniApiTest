@@ -53,7 +53,7 @@ namespace UmbaniApiTest
                   options.TokenValidationParameters.ValidateIssuer = false;
               });
 
-            _ = services.AddAuthorization(options => options.AddPolicy("DivisionManager", policyBuilder => policyBuilder.RequireClaim("groups", "034fc3da-3a24-48e1-ab75-fd76466a5c7d")));
+            _ = services.AddAuthorization(options => options.AddPolicy("sectionisionManager", policyBuilder => policyBuilder.RequireClaim("groups", "034fc3da-3a24-48e1-ab75-fd76466a5c7d")));
 
             _ = services.AddMvc(options =>
               {

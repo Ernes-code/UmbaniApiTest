@@ -7,56 +7,56 @@
 
 <h4>Add Measurement</h4>
 <hr />
-<div class="row">
-    <div class="col-md-4">
+<section class="row">
+    <section class="col-md-4">
         <form asp-action="GridView" asp-controller="Home" method="post" role="form">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
+            <section asp-validation-summary="ModelOnly" class="text-danger"></section>
+            <section class="form-group">
                 <label class="control-label col-sm-2" for="temperature">Temperature:</label>
                 <input type="number" class="form-control" id="temperature" placeholder="Enter Temperature" name="temperature">
-            </div>
-            <div class="form-group">
+            </section>
+            <section class="form-group">
                 <label class="control-label col-sm-2" for="humidity">Humidity:</label>
                 <input type="number" class="form-control" id="humidity" placeholder="Enter Humidity" name="humidity">
-            </div>
-            <div class="form-group">
+            </section>
+            <section class="form-group">
                 <label class="control-label col-sm-2" for="humidity">Weight:</label>
                 <input type="number" class="form-control" id="weight" placeholder="Enter Weight" name="weight">
-            </div>
-            <div class="form-group">
+            </section>
+            <section class="form-group">
                 <label class="control-label col-sm-2" for="depth">Depth:</label>
                 <input type="number" class="form-control" id="depth" placeholder="Enter Depth" name="depth">
-            </div>
-            <div class="form-group">
+            </section>
+            <section class="form-group">
                 <label class="control-label col-sm-2" for="height">Height:</label>
                 <input type="number" class="form-control" id="height" placeholder="Enter Height" name="height">
-            </div>
-            <div class="form-group">
+            </section>
+            <section class="form-group">
                 <label class="control-label col-sm-2" for="lenght">Lenght:</label>
                 <input type="number" class="form-control" id="lenght" placeholder="Enter Lenght" name="lenght">
-            </div>
-            <div class="form-group">
+            </section>
+            <section class="form-group">
                 <label class="control-label col-sm-2" for="catagory">Catagory:</label>
                 <select class="form-control" id="catagory">
                     <option>Line 1</option>
                     <option>Line 2</option>
                     <option>Line 3</option>
                 </select>
-            </div>
-            <div class="form-group">
-                <div class="col-sm-offset-2 col-sm-10">
-                    <div class="checkbox">
+            </section>
+            <section class="form-group">
+                <section class="col-sm-offset-2 col-sm-10">
+                    <section class="checkbox">
                         <label><input type="checkbox" name="pass"> Pass</label>
-                    </div>
-                </div>
-            </div>
-            <div class="form-group">
+                    </section>
+                </section>
+            </section>
+            <section class="form-group">
                 <input type="submit" value="Add" class="btn btn-primary" />
-            </div>
+            </section>
         </form>
-    </div>
-</div>
+    </section>
+</section>
 
-<div>
+<section>
     <a asp-action="GridView" asp-controller="Home">Back to List</a>
-</div>
+</section>

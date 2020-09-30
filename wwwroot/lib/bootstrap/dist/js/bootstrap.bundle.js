@@ -3242,18 +3242,18 @@
 
     // Detect if the offset string contains a pair of values or a single one
     // they could be separated by comma or space
-    var divider = fragments.indexOf(find(fragments, function (frag) {
+    var sectionider = fragments.indexOf(find(fragments, function (frag) {
       return frag.search(/,|\s/) !== -1;
     }));
 
-    if (fragments[divider] && fragments[divider].indexOf(',') === -1) {
+    if (fragments[sectionider] && fragments[sectionider].indexOf(',') === -1) {
       console.warn('Offsets separated by white space(s) are deprecated, use a comma (,) instead.');
     }
 
-    // If divider is found, we divide the list of values and operands to divide
+    // If sectionider is found, we sectionide the list of values and operands to sectionide
     // them by ofset X and Y.
     var splitRegex = /\s*,\s*|\s+/;
-    var ops = divider !== -1 ? [fragments.slice(0, divider).concat([fragments[divider].split(splitRegex)[0]]), [fragments[divider].split(splitRegex)[1]].concat(fragments.slice(divider + 1))] : [fragments];
+    var ops = sectionider !== -1 ? [fragments.slice(0, sectionider).concat([fragments[sectionider].split(splitRegex)[0]]), [fragments[sectionider].split(splitRegex)[1]].concat(fragments.slice(sectionider + 1))] : [fragments];
 
     // Convert the values with units to absolute pixels to allow our computations
     ops = ops.map(function (op, index) {
@@ -3558,11 +3558,11 @@
      * `width`. In case of `left` or `right`, it will be the `height`.
      *
      * You can provide a single value (as `Number` or `String`), or a pair of values
-     * as `String` divided by a comma or one (or more) white spaces.<br />
+     * as `String` sectionided by a comma or one (or more) white spaces.<br />
      * The latter is a deprecated method because it leads to confusion and will be
      * removed in v2.<br />
      * Additionally, it accepts additions and subtractions between different units.
-     * Note that multiplications and divisions aren't supported.
+     * Note that multiplications and sectionisions aren't supported.
      *
      * Valid examples are:
      * ```
@@ -4944,7 +4944,7 @@
       var animate = $(this._element).hasClass(ClassName$5.FADE) ? ClassName$5.FADE : '';
 
       if (this._isShown && this._config.backdrop) {
-        this._backdrop = document.createElement('div');
+        this._backdrop = document.createElement('section');
         this._backdrop.className = ClassName$5.BACKDROP;
 
         if (animate) {
@@ -5090,11 +5090,11 @@
 
     _proto._getScrollbarWidth = function _getScrollbarWidth() {
       // thx d.walsh
-      var scrollDiv = document.createElement('div');
-      scrollDiv.className = ClassName$5.SCROLLBAR_MEASURER;
-      document.body.appendChild(scrollDiv);
-      var scrollbarWidth = scrollDiv.getBoundingClientRect().width - scrollDiv.clientWidth;
-      document.body.removeChild(scrollDiv);
+      var scrollsection = document.createElement('section');
+      scrollsection.className = ClassName$5.SCROLLBAR_MEASURER;
+      document.body.appendChild(scrollsection);
+      var scrollbarWidth = scrollsection.getBoundingClientRect().width - scrollsection.clientWidth;
+      document.body.removeChild(scrollsection);
       return scrollbarWidth;
     } // Static
     ;
@@ -5205,7 +5205,7 @@
     br: [],
     col: [],
     code: [],
-    div: [],
+    section: [],
     em: [],
     hr: [],
     h1: [],
@@ -5349,7 +5349,7 @@
   };
   var Default$4 = {
     animation: true,
-    template: '<div class="tooltip" role="tooltip">' + '<div class="arrow"></div>' + '<div class="tooltip-inner"></div></div>',
+    template: '<section class="tooltip" role="tooltip">' + '<section class="arrow"></section>' + '<section class="tooltip-inner"></section></section>',
     trigger: 'hover focus',
     title: '',
     delay: 0,
@@ -6044,7 +6044,7 @@
     placement: 'right',
     trigger: 'click',
     content: '',
-    template: '<div class="popover" role="tooltip">' + '<div class="arrow"></div>' + '<h3 class="popover-header"></h3>' + '<div class="popover-body"></div></div>'
+    template: '<section class="popover" role="tooltip">' + '<section class="arrow"></section>' + '<h3 class="popover-header"></h3>' + '<section class="popover-body"></section></section>'
   });
 
   var DefaultType$5 = _objectSpread({}, Tooltip.DefaultType, {

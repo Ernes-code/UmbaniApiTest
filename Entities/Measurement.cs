@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 using static UmbaniApiTest.Global;
@@ -16,6 +18,8 @@ namespace UmbaniApiTest.Entities
         public double Lenght { get; set; }
         public double Width { get; set; }
         public Catagory Catagory { get; set; }
+
+        [Timestamp]
         public DateTime? DateTime  { get; set; }
         public bool Pass { get; set; }
         public Guid PersonId { get; set; }

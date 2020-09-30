@@ -716,7 +716,7 @@ $.validator.addMethod( "netmask", function( value, element ) {
  *
  * The NIE is the equivalent of a Spaniards Número de Identificación Fiscal (NIF) which serves as a fiscal
  * identification number. The CIF number (Certificado de Identificación Fiscal) is equivalent to the NIF, but applies to
- * companies rather than individuals. The NIE consists of an 'X' or 'Y' followed by 7 or 8 digits then another letter.
+ * companies rather than insectioniduals. The NIE consists of an 'X' or 'Y' followed by 7 or 8 digits then another letter.
  */
 $.validator.addMethod( "nieES", function( value, element ) {
 	"use strict";
@@ -751,7 +751,7 @@ $.validator.addMethod( "nieES", function( value, element ) {
 }, "Please specify a valid NIE number." );
 
 /*
- * The Número de Identificación Fiscal ( NIF ) is the way tax identification used in Spain for individuals
+ * The Número de Identificación Fiscal ( NIF ) is the way tax identification used in Spain for insectioniduals
  */
 $.validator.addMethod( "nifES", function( value, element ) {
 	"use strict";
